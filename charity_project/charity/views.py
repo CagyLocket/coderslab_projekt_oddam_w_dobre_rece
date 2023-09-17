@@ -14,10 +14,16 @@ class LandingPage(View):
     def get(self, request, *args, **kwargs):
         donated_bags = Donation.objects.aggregate(total_bags=Sum('quantity'))['total_bags']
         supported_organizations = Institution.objects.count()
+        foundations = Institution.objects.filter(type__contains='fundacja')
+        organisations = Institution.objects.filter(type__contains='organizacja')
+        fundraisers = Institution.objects.filter(type__contains='zbiorka')
 
         context = {
             'donated_bags': donated_bags,
             'supported_organizations': supported_organizations,
+            'foundations': foundations,
+            'organisations': organisations,
+            'fundraisers': fundraisers,
         }
         return render(request, "charity/index.html", context)
 
