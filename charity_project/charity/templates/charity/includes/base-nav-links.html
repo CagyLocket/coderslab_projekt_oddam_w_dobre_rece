@@ -1,7 +1,8 @@
 {% load static %}
-<li><a href="/" class="btn btn--without-border active">Start</a></li>
-<li><a href="#steps" class="btn btn--without-border">O co chodzi?</a></li>
-<li><a href="#about-us" class="btn btn--without-border">O nas</a></li>
-<li><a href="#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
+{% load custom_tags %}
+<li><a href="{% url 'charity:landing-page' %}" class="btn btn--without-border active">Start</a></li>
+<li><a href="{% anchor 'charity:landing-page' 'steps' %}" class="btn btn--without-border">O co chodzi?</a></li>
+<li><a href="{% anchor 'charity:landing-page' 'about-us' %}" class="btn btn--without-border">O nas</a></li>
+<li><a href="{% anchor 'charity:landing-page' 'help' %}" class="btn btn--without-border">Fundacje i organizacje</a></li>
 <li><a href="{% url 'charity:add-donation' %}" class="btn btn--without-border">Przekaż dary</a></li>
 <li><a href="#contact" class="btn btn--without-border">Kontakt</a></li>
