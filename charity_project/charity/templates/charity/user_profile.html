@@ -1,0 +1,19 @@
+{% extends "charity/base.html" %}
+{% load static %}
+
+{% block title %} User profile {% endblock %}
+
+{% block content %}
+
+{% block header %}
+{% endblock %}
+
+    <section class="login-page">
+      <h2>Profil użytkownika</h2>
+        <p>Imię: {{user.first_name }}</p>
+        <p>Nazwisko: {{user.last_name }}</p>
+        <p>Email: {{user.email }}</p>
+        <p>Użytkownik: {{user.username }}</p>
+    </section>
+
+{% endblock %}
