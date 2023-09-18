@@ -2,11 +2,14 @@
 
   {% if request.user.is_authenticated  %}
               <li class="logged-user">
-            Witaj Agata
+            Witaj {{user.username }}
             <ul class="dropdown">
               <li><a href="#">Profil</a></li>
               <li><a href="#">Ustawienia</a></li>
-              <li><a href="#">Wyloguj</a></li>
+                {% if request.user.is_superuser %}
+              <li><a href="/admin">Panel administracyjny</a></li>
+                {% endif %}
+              <li><a href="{% url 'charity:logout' %}">Wyloguj</a></li>
             </ul>
           </li>
 
