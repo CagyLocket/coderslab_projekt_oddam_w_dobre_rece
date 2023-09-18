@@ -10,6 +10,17 @@
 
     <section class="login-page">
       <h2>Załóż konto</h2>
+      <h1 style="color: darkorange">
+        {% if messages %}
+    {% for message in messages %}
+        {%  if forloop.first  %}
+                {{ message }}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+      </h1>
+
       <form action="{% url 'charity:register' %}" method="post">
         {% csrf_token %}
         <div class="form-group">

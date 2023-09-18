@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'users.User'
 AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
 LOGIN_URL = 'login'
-# LOGIN_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = 'landing-page'
 
 
 # Application definition

@@ -2,7 +2,7 @@
 
   {% if request.user.is_authenticated  %}
               <li class="logged-user">
-            Witaj {{user.username }}
+            Witaj {{user.first_name }}
             <ul class="dropdown">
               <li><a href="{% url 'charity:user-profile' %}">Profil</a></li>
               <li><a href="#">Ustawienia</a></li>
