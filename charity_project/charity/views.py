@@ -40,8 +40,15 @@ class LoginView(LoginView):
         return reverse_lazy('charity:landing-page')
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Wprowadź poprawne dane w polach „adres e-mail” i „hasło” dla konta należącego do zespołu. Uwaga: wielkość liter może mieć znaczenie.')
-        return self.render_to_response(self.get_context_data(form=form))
+        email = form.cleaned_data.get('email')
+        user = User.objects.filter(email=email).exists()
+
+        if not user:
+            # Jeśli użytkownik nie istnieje, przekieruj na stronę rejestracji
+            messages.error(self.request, 'Nie masz konta w naszym serwisie. Zarejstruj się.' )
+            return redirect('charity:register')
+
+        return super().form_valid(form)
 
 
 class LogoutView(RedirectView):
